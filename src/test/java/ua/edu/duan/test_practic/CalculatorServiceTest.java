@@ -40,8 +40,17 @@ public class CalculatorServiceTest {
         assertEquals(5,result);
     }
 
-    @ParameterizedTest(name = "")
-    @CsvSource
+    @ParameterizedTest(name = "{index} => expected={0}, a={1}, b={2}")
+    @CsvSource({
+            "7, 5, 2",
+            "8, 3, 5",
+            "11, 4, 7"
+    })
+    void testAddCsvSource(int expected, int a, int b) {
+        CalculatorService calculatorService = new CalculatorService();
+        int result = calculatorService.add(a, b);
+        assertEquals(expected, result);
+    }
 
 }
 
