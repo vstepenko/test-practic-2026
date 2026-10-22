@@ -24,9 +24,6 @@ dependencies {
 
 	implementation 'org.postgresql:postgresql:42.6.0'
 
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
-
 	testImplementation 'org.springframework.boot:spring-boot-starter-jdbc'
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -38,6 +35,13 @@ dependencies {
 	testImplementation 'org.junit.jupiter:junit-jupiter-params'
 
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	compileOnly 'org.projectlombok:lombok:1.18.48'
+	annotationProcessor 'org.projectlombok:lombok:1.18.48'
+
+	testCompileOnly 'org.projectlombok:lombok:1.18.48'
+	testAnnotationProcessor 'org.projectlombok:lombok:1.18.48'
+
 }
 
 tasks.named('test') {
