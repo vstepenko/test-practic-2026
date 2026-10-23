@@ -7,8 +7,12 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.boot.test.context.SpringBootTest;
+import ua.edu.duan.test_practic.entity.UserEntity;
 import ua.edu.duan.test_practic.repository.UserRepository;
 import ua.edu.duan.test_practic.service.UserService;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
@@ -33,5 +37,13 @@ public class UserServiceTest {
         verify(userRepository, Mockito.times(1)).save(any());
     }
 
+    @Test
+    public void testGetAllUsers() {
+        UserEntity mockUserEntity = new UserEntity("Anastasia", "test", "ana@test.com");
+        Mockito.when(userRepository.findAll()).thenReturn(List.of(mockUserEntity));
+        List <UserEntity> realUsers = userService.getAllUsers();
+        assertEquals(1,realUsers.size());
+        verify(userRepository, Mockito.times(1)).findAll();
+    }
 
 }
