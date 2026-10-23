@@ -21,8 +21,12 @@ public class UserController {
                            @RequestParam String email) {
         userService.addUser(login, name, email);
     }
-    @GetMapping
+    @GetMapping(path = "/users")
     public List<UserEntity> getAllUsers(){
         return userService.getAllUsers();
+    }
+    @GetMapping
+    public UserEntity getUser(@RequestParam String login){
+        return userService.getUser(login);
     }
 }
