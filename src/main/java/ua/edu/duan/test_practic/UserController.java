@@ -21,12 +21,18 @@ public class UserController {
                            @RequestParam String email) {
         userService.addUser(login, name, email);
     }
-    @GetMapping(path = "/users")
-    public List<UserEntity> getAllUsers(){
-        return userService.getAllUsers();
-    }
-    @GetMapping
-    public UserEntity getUser(@RequestParam String login){
-        return userService.getUser(login);
+
+    @GetMapping("/search")
+    public List<UserEntity> getUsersByName(@RequestParam String name) {
+        return userService.getUsersByName(name);
     }
 }
+//    @GetMapping
+//    public List<UserEntity> getAllUsers(){
+//        return userService.getAllUsers();
+//    }
+////    @GetMapping
+////    public UserEntity getUser(@RequestParam String login){
+////        return userService.getUser(login);
+////    }
+//}
