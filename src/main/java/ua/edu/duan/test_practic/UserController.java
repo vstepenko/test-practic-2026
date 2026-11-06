@@ -26,13 +26,13 @@ public class UserController {
     public List<UserEntity> getUsersByName(@RequestParam String name) {
         return userService.getUsersByName(name);
     }
+
+    @GetMapping
+    public List<UserEntity> getAllUsers(){
+        return userService.getAllUsers();
+    }
+    @GetMapping
+    public UserEntity getUser(@RequestParam String login){
+        return userService.getUser(login);
+    }
 }
-//    @GetMapping
-//    public List<UserEntity> getAllUsers(){
-//        return userService.getAllUsers();
-//    }
-////    @GetMapping
-////    public UserEntity getUser(@RequestParam String login){
-////        return userService.getUser(login);
-////    }
-//}

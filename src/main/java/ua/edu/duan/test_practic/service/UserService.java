@@ -19,9 +19,9 @@ public class UserService {
         userEntity.setEmail(email);
         userRepository.save(userEntity);
     }
-//    //public List<UserEntity> getAllUsers() {
-//        return userRepository.findAll();
-//    }
+    public List<UserEntity> getAllUsers() {
+        return userRepository.findAll();
+    }
 
     public List<UserEntity> getUsersByName(String name) {
         return userRepository.findByUserName(name);
