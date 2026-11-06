@@ -38,12 +38,14 @@ public class UserServiceTest {
     }
 
     @Test
-    public void testGetAllUsers() {
+    public void testGetUsersByName() {
         UserEntity mockUserEntity = new UserEntity("Anastasia", "test", "ana@test.com");
-        Mockito.when(userRepository.findAll()).thenReturn(List.of(mockUserEntity));
-        List <UserEntity> realUsers = userService.getAllUsers();
-        assertEquals(1,realUsers.size());
-        verify(userRepository, Mockito.times(1)).findAll();
+        Mockito.when(userRepository.findByUserName("test"))
+                .thenReturn(List.of(mockUserEntity));
+        List<UserEntity> realUsers = userService.getUsersByName("test");
+        assertEquals(1, realUsers.size());
+        assertEquals("test", realUsers.get(0).getUserName());
+        Mockito.verify(userRepository, Mockito.times(1))
+                .findByUserName("test");
     }
-
 }
